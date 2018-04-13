@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonaEditDlg" widgetVar="PersonaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPersonaTitle}">
+            <h:form id="PersonaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPersonaLabel_personaPersona}" for="personaPersona" />
+                        <p:inputText id="personaPersona" value="#{personaController.selected.personaPersona}" title="#{bundle.EditPersonaTitle_personaPersona}" required="true" requiredMessage="#{bundle.EditPersonaRequiredMessage_personaPersona}"/>
+                        <p:outputLabel value="#{bundle.EditPersonaLabel_personaDocumento}" for="personaDocumento" />
+                        <p:inputText id="personaDocumento" value="#{personaController.selected.personaDocumento}" title="#{bundle.EditPersonaTitle_personaDocumento}" />
+                        <p:outputLabel value="#{bundle.EditPersonaLabel_personaNombre}" for="personaNombre" />
+                        <p:inputText id="personaNombre" value="#{personaController.selected.personaNombre}" title="#{bundle.EditPersonaTitle_personaNombre}" />
+                        <p:outputLabel value="#{bundle.EditPersonaLabel_personaApellido}" for="personaApellido" />
+                        <p:inputText id="personaApellido" value="#{personaController.selected.personaApellido}" title="#{bundle.EditPersonaTitle_personaApellido}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{personaController.update}" value="#{bundle.Save}" update="display,:PersonaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PersonaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PersonaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

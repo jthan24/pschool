@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsuarioViewDlg" widgetVar="UsuarioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewUsuarioTitle}">
+            <h:form id="UsuarioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_usuarioUsuario}"/>
+                        <h:outputText value="#{usuarioController.selected.usuarioUsuario}" title="#{bundle.ViewUsuarioTitle_usuarioUsuario}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_usuarioNombre}"/>
+                        <h:outputText value="#{usuarioController.selected.usuarioNombre}" title="#{bundle.ViewUsuarioTitle_usuarioNombre}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_usuarioNmUsuario}"/>
+                        <h:outputText value="#{usuarioController.selected.usuarioNmUsuario}" title="#{bundle.ViewUsuarioTitle_usuarioNmUsuario}"/>
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_usuarioPersona}"/>
+                        <h:outputText value="#{usuarioController.selected.usuarioPersona}" title="#{bundle.ViewUsuarioTitle_usuarioPersona}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="UsuarioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
